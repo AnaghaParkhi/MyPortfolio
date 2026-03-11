@@ -5,7 +5,7 @@
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 This project analyzes **order and menu data from The World Cafe** using **MySQL** to provide actionable insights for restaurant management.  
 
 The analysis helps answer key business questions:
@@ -18,7 +18,7 @@ The analysis helps answer key business questions:
 
 ---
 
-## 🖼️ Highlights / Key Insights
+# 🖼️ Highlights / Key Insights
 
 | Insight | Description |
 |---------|-------------|
@@ -34,7 +34,7 @@ The analysis helps answer key business questions:
 
 ---
 
-## 📂 Table of Contents
+# 📂 Table of Contents
 
 - [Project Overview](#project-overview)  
 - [Data Sources](#data-sources)  
@@ -47,22 +47,21 @@ The analysis helps answer key business questions:
 - [References](#references)  
 
 ---
-
-## 🗄️ Data Sources
+# 🗄️ Data Sources
 
 1. **Menu Items Data** – `menu_items` file: Details about each menu item, including price, category, and cuisine type.  
 2. **Order Details Data** – `order_details` file: Details of each order placed, including item IDs, order ID, and order date.
 
 ---
 
-## 🛠️ Tools Used
+# 🛠️ Tools Used
 
 - **MySQL** – ETL, data cleaning, and exploratory data analysis  
 - **GitHub** – Version control and project hosting  
 
 ---
 
-## 🧹 Data Cleaning / Preparation
+# 🧹 Data Cleaning / Preparation
 
 1. Loaded the datasets into MySQL.  
 2. Checked for missing values and duplicates.  
@@ -71,7 +70,7 @@ The analysis helps answer key business questions:
 
 ---
 
-## 🔍 Exploratory Data Analysis (EDA)
+# 🔍 Exploratory Data Analysis (EDA)
 
 EDA answered business-critical questions:
 
@@ -88,9 +87,9 @@ EDA answered business-critical questions:
 
 ---
 
-## 💻 SQL Queries (Examples)
+# 💻 SQL Queries (Examples)
 
-### Menu Analysis
+# Menu Analysis
 ```sql
 -- Count items on the menu
 SELECT COUNT(*) FROM menu_items;
@@ -99,5 +98,25 @@ SELECT COUNT(*) FROM menu_items;
 SELECT * FROM menu_items ORDER BY price;
 SELECT * FROM menu_items ORDER BY price DESC;
 
+
+# Orders Analysis
+
+-- Total orders and items
+SELECT COUNT(DISTINCT order_id) FROM order_details;
+SELECT COUNT(*) FROM order_details;
+
+-- Orders with most items
+SELECT order_id, COUNT(item_id) AS num_items
+FROM order_details
+GROUP BY order_id
+ORDER BY num_items DESC;
+
+-- Orders with more than 12 items
+SELECT COUNT(*) FROM (
+    SELECT order_id, COUNT(item_id) AS num_items
+    FROM order_details
+    GROUP BY order_id
+    HAVING num_items > 12
+) AS large_orders;
 -- Italian dishes count
 SELECT COUNT(*) FROM menu_items WHERE category='italian';
