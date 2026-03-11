@@ -118,5 +118,74 @@ SELECT COUNT(*) FROM (
     GROUP BY order_id
     HAVING num_items > 12
 ) AS large_orders;
+
+# Combined Analysis
+-- Join menu_items and order_details
+SELECT od.*, mi.item_name, mi.category, mi.price
+FROM order_details od
+LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id;
+
+-- Most and least ordered items
+SELECT item_name, category, COUNT(order_details_id) AS num_purchases
+FROM order_details od
+LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
+GROUP BY item_name, category
+ORDER BY num_purchases DESC;
+
+-- Top 5 highest spending orders
+SELECT order_id, SUM(price) AS total_spent
+FROM order_details od
+LEFT JOIN menu_items mi ON od.item_id = mi.menu_item_id
+GROUP BY order_id
+ORDER BY total_spent DESC
+LIMIT 5;
+
+📊 Results / Findings
+
+Most expensive item: Shrimp Scampi (Italian)
+
+Least expensive item: Edamame (Asian)
+
+Most ordered item: American Hamburger
+
+Least ordered item: Mexican Chicken Tacos
+
+Top spending orders combine premium dishes from multiple categories
+
+Italian cuisine dominates both menu variety and order frequency
+
+🚀 Future Improvements
+
+Create interactive dashboards in Tableau or Power BI
+
+Perform customer segmentation analysis
+
+Forecast future sales trends
+
+Optimize menu pricing and promotions
+
+📚 References
+
+Maven Analytics – SQL tutorials for Restaurant Order Analysis
+
+---
+
+✅ **Tips for adding this to GitHub:**
+
+1. Create a folder called `images/` in your repo.
+2. Add screenshots for:
+   - Banner (`banner.png`)  
+   - Menu analysis chart (`menu_analysis.png`)  
+   - Top orders chart (`top_orders.png`)  
+3. Paste this markdown into `README.md`.  
+
+---
+
+If you want, I can **also make a version with “fancy GitHub badges”** like SQL skill, dataset, last updated, etc., to make it **look very professional for recruiters**.  
+
+Do you want me to do that too?
+
+
+
 -- Italian dishes count
 SELECT COUNT(*) FROM menu_items WHERE category='italian';
