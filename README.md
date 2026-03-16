@@ -12,15 +12,17 @@ This portfolio demonstrates my skills in:
 
 ## Projects
 
-### Healthcare Performance Analysis
-Analysis of patient admissions, billing, and demographics across US hospitals from 2019-2024.
+### ER Healthcare Performance Analysis
+Analysis of ER patient admissions, demographics, department referrals, wait times, and satisfaction scores from Jan 2023 to Dec 2024 using 9,216 hospital records.
 
-### Renewable Energy Consumption (USA)
-Analysis of US renewable energy trends from 1970 to present, by source and sector.
+### Churn Analysis
+Examines customer behavior and service usage patterns to identify factors that lead to customer churn and help businesses improve customer retention.
 
-### US Electricity Generation Analysis
-Examination of electricity generation patterns and CO2 emissions across US states.
+### HR Attrition Analysis
+Analysis of employee attrition, workforce demographics, job roles, and satisfaction levels using 1,470 HR employee records.
 
+### Walmart Sales Analysis
+Analysis of retail sales, customer behavior, product performance, and promotional impact using 5,000 Walmart store transactions.
 
 ## Skills
 
